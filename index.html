@@ -477,6 +477,28 @@ footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; mar
   <p class="colour-note">* Marble patterns vary slightly by production.</p>
 </div>
 
+<script>
+function selectColor(val, name) {
+    const preview = document.getElementById('previewGuard');
+    const previewText = document.getElementById('previewName');
+    const labInput = document.getElementById('selectedColorInput');
+    const labPreview = document.getElementById('labColorPreview');
+
+    // 應用背景（支持顏色與圖片 url）
+    preview.style.background = val;
+    preview.style.backgroundSize = 'cover';
+    preview.style.backgroundPosition = 'center';
+    
+    previewText.innerText = name;
+    
+    // 自動填入 Lab Slip
+    if(labInput) labInput.value = name;
+    if(labPreview) {
+        labPreview.style.background = val;
+        labPreview.style.backgroundSize = 'cover';
+    }
+}
+</script>
   </div>
 </section>
 
