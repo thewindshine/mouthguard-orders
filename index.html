@@ -578,16 +578,17 @@ function selectColor(val, name) {
       <h3 style="font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:0.5rem;">Case Gallery</h3>
       <p style="opacity:0.7; margin-bottom:2rem;">Our latest surgical guide cases — updated automatically via Google Photos</p>
 
-      <!-- 
-        HOW TO EMBED YOUR GOOGLE PHOTOS ALBUM:
-        1. Go to your Google Photos album
-        2. Click Share → Create link → Copy link
-        3. Go to: https://www.labnol.org/embed/google/photos/
-           OR use the direct embed URL format below
-        4. Replace the src URL below with your album embed URL
-        
-        Direct embed format (if album is shared as public):
-        https://photos.google.com/share/YOUR_ALBUM_ID/embed
+     <section id="case-gallery" style="padding: 40px 0;">
+    <div class="container">
+        <script src="https://cdn.jsdelivr.net/npm/publicalbum@latest/embed-ui.min.js" async></script>
+        <div class="pa-gallery-player-widget" style="width:100%; height:600px; display:none; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+             data-link="https://photos.app.goo.gl/ireJ6juv1Fq6L8dD9"
+             data-title="Surgical Guide Case Gallery"
+             data-description="我們的最新外科導板案例 — 自動同步更新">
+             <object data="https://lh3.googleusercontent.com/pw/AP1GczP..."></object>
+        </div>
+    </div>
+</section>
       -->
       <div style="border:2px dashed #f2e0d0; border-radius:15px; padding:2rem; background:#fffaf5;">
         <p style="font-size:1.1rem; margin-bottom:1rem;">📸 <strong>Google Photos Gallery — Setup Required</strong></p>
