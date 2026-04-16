@@ -6,152 +6,142 @@
 <title>Cusps and Crafts by Shine | Digital Lab WA</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 <style>
-/* =========== CSS RESET & THEME =========== */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --primary-warm: #FF8C42; 
-  --accent-yellow: #FFD166; 
-  --soft-cream: #FFF9F2; 
-  --deep-brown: #5E3023; 
+  --primary-warm: #FF8C42;
+  --accent-yellow: #FFD166;
+  --soft-cream: #FFF9F2;
+  --deep-brown: #5E3023;
   --white: #ffffff;
   --mid-gray: #757575;
   --transition: all 0.3s ease;
 }
 html{scroll-behavior:smooth;}
-body{font-family:'Nunito',sans-serif;background:var(--soft-cream);color:var(--deep-brown);overflow-x:hidden; line-height:1.6;}
+body{font-family:'Nunito',sans-serif;background:var(--soft-cream);color:var(--deep-brown);overflow-x:hidden;line-height:1.6;}
 
-/* =========== NAVIGATION =========== */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-  background:rgba(255,255,255,0.95); backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0.7rem 5%; box-shadow:0 2px 15px rgba(0,0,0,0.05);
+  padding:0.7rem 5%;box-shadow:0 2px 15px rgba(0,0,0,0.05);
 }
-.nav-logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--primary-warm); font-weight: 700; font-size: 1.1rem; }
-.nav-logo-img { height: 45px; width: 45px; border-radius: 50%; object-fit: cover; }
-.nav-links{display:flex; gap:0.5rem; list-style:none; align-items: center;}
-.nav-links a{
-  text-decoration:none; color:var(--deep-brown); font-size:0.9rem;
-  font-weight:600; padding:0.6rem 1rem; border-radius:25px; transition: var(--transition);
-}
-.nav-links a:hover, .nav-links a.active{background:var(--primary-warm); color:#fff;}
-.nav-cta{background:var(--accent-yellow)!important; color:var(--deep-brown)!important;}
+.nav-logo-wrapper{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--primary-warm);font-weight:700;font-size:1.1rem;}
+.nav-logo-img{height:45px;width:45px;border-radius:50%;object-fit:cover;}
+.nav-links{display:flex;gap:0.5rem;list-style:none;align-items:center;}
+.nav-links a{text-decoration:none;color:var(--deep-brown);font-size:0.9rem;font-weight:600;padding:0.6rem 1rem;border-radius:25px;transition:var(--transition);}
+.nav-links a:hover,.nav-links a.active{background:var(--primary-warm);color:#fff;}
+.nav-cta{background:var(--accent-yellow)!important;color:var(--deep-brown)!important;}
 
-/* =========== PAGE SYSTEM =========== */
-.page{display:none; min-height:100vh; padding-top:100px;}
-.page.active{display:block; animation: fadeIn 0.4s ease-out;}
-@keyframes fadeIn { from{opacity:0; transform: translateY(10px);} to{opacity:1; transform: translateY(0);} }
+.page{display:none;min-height:100vh;padding-top:100px;}
+.page.active{display:block;animation:fadeIn 0.4s ease-out;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-/* =========== HERO & CARDS =========== */
 .hero{
-  position:relative; min-height:70vh; display:flex; align-items:center; padding:0 8%; overflow:hidden;
-  background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%); border-radius: 0 0 50px 50px;
+  position:relative;min-height:70vh;display:flex;align-items:center;padding:0 8%;overflow:hidden;
+  background:linear-gradient(135deg,#fceabb 0%,#f8b500 100%);border-radius:0 0 50px 50px;
 }
-.hero-bg{ position:absolute; inset:0; z-index:0; background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000'); background-size:cover; opacity: 0.15; }
-.hero-content{position:relative; z-index:2; max-width:800px;}
-.hero h1{ font-family:'Playfair Display',serif; font-size:clamp(2.5rem, 6vw, 3.8rem); color: var(--deep-brown); margin-bottom:1.5rem; line-height:1.1; }
+.hero-bg{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000');background-size:cover;opacity:0.15;}
+.hero-content{position:relative;z-index:2;max-width:800px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,3.8rem);color:var(--deep-brown);margin-bottom:1.5rem;line-height:1.1;}
 
-.section-header{text-align:center; padding:4rem 5% 3rem;}
-.section-header h2{font-family:'Playfair Display',serif; font-size:2.5rem; margin-bottom:0.5rem;}
+.section-header{text-align:center;padding:4rem 5% 3rem;}
+.section-header h2{font-family:'Playfair Display',serif;font-size:2.5rem;margin-bottom:0.5rem;}
 
-.cards-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:2rem; padding:0 8% 5rem;}
-.card{ background:#fff; border-radius:25px; overflow:hidden; transition: var(--transition); box-shadow: 0 10px 30px rgba(0,0,0,0.05); cursor:pointer;}
-.card:hover{transform:translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1);}
-.card-img{height:220px; background-size:cover; background-position:center;}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:0 8% 5rem;}
+.card{background:#fff;border-radius:25px;overflow:hidden;transition:var(--transition);box-shadow:0 10px 30px rgba(0,0,0,0.05);cursor:pointer;}
+.card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.1);}
+.card-img{height:220px;background-size:cover;background-position:center;}
 .card-body{padding:1.8rem;}
 
-/* =========== COLOUR CHART STYLES =========== */
-.colour-chart-container { background: #fff; border-radius: 30px; padding: 3rem 5%; margin: 2rem 0 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-.colour-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-.colour-item { text-align: center; cursor: pointer; transition: var(--transition); padding: 10px; border-radius: 15px; }
-.colour-item:hover { background: #fff4e6; }
-.colour-swatch { 
-    width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 0.8rem; 
-    border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: var(--transition);
+.colour-chart-container{background:#fff;border-radius:30px;padding:3rem 5%;margin:2rem 0 2rem;box-shadow:0 10px 30px rgba(0,0,0,0.03);}
+.colour-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1.5rem;margin-top:1.5rem;}
+.colour-item{text-align:center;cursor:pointer;transition:var(--transition);padding:10px;border-radius:15px;}
+.colour-item:hover{background:#fff4e6;}
+.colour-swatch{
+  width:60px;height:60px;border-radius:50%;margin:0 auto 0.8rem;
+  border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:var(--transition);
 }
-.colour-item:hover .colour-swatch { transform: scale(1.1); }
-.colour-name { font-size: 0.85rem; font-weight: 700; color: var(--deep-brown); display: block; line-height: 1.2; }
-.colour-note { font-size: 0.75rem; color: var(--mid-gray); text-align: center; margin-top: 2rem; font-style: italic; }
+.colour-item:hover .colour-swatch{transform:scale(1.1);}
+.colour-name{font-size:0.85rem;font-weight:700;color:var(--deep-brown);display:block;line-height:1.2;}
+.colour-note{font-size:0.75rem;color:var(--mid-gray);text-align:center;margin-top:2rem;font-style:italic;}
 
-/* =========== DETAIL PAGE LAYOUTS =========== */
-.detail-container { max-width: 1100px; margin: 0 auto; padding: 0 5% 5rem; }
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem; }
-.detail-image { width: 100%; border-radius: 25px; box-shadow: 0 15px 45px rgba(0,0,0,0.1); }
-.detail-text h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 1.2rem; color: var(--primary-warm); }
-.detail-text ul { list-style: none; margin: 1.5rem 0; }
-.detail-text ul li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; font-size: 1.05rem; }
-.detail-text ul li::before { content: '•'; position: absolute; left: 0; color: var(--primary-warm); font-size: 1.5rem; line-height: 1; }
-.btn-back-to-form { display: inline-block; padding: 0.8rem 2rem; background: var(--deep-brown); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 10px;}
+.detail-container{max-width:1100px;margin:0 auto;padding:0 5% 5rem;}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2rem;}
+.detail-image{width:100%;border-radius:25px;box-shadow:0 15px 45px rgba(0,0,0,0.1);}
+.detail-text h3{font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1.2rem;color:var(--primary-warm);}
+.detail-text ul{list-style:none;margin:1.5rem 0;}
+.detail-text ul li{margin-bottom:0.8rem;padding-left:1.5rem;position:relative;font-size:1.05rem;}
+.detail-text ul li::before{content:'•';position:absolute;left:0;color:var(--primary-warm);font-size:1.5rem;line-height:1;}
+.btn-back-to-form{display:inline-block;padding:0.8rem 2rem;background:var(--deep-brown);color:white;border-radius:50px;text-decoration:none;font-weight:700;margin-top:10px;}
 
-/* =========== COLOUR PREVIEW =========== */
-.preview-section {
-    text-align: center; margin: 3rem 0; padding: 2.5rem;
-    background: #fff; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+.preview-section{
+  text-align:center;margin:3rem 0;padding:2.5rem;
+  background:#fff;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,0.03);
 }
-.preview-guard-shape {
-    width: 220px; height: 110px; margin: 0 auto;
-    border-radius: 110px 110px 45px 45px;
-    background: #eee; box-shadow: inset 0 5px 15px rgba(255,255,255,0.5), 0 10px 25px rgba(0,0,0,0.1);
-    transition: background 0.5s ease;
+.preview-guard-shape{
+  width:220px;height:110px;margin:0 auto;
+  border-radius:110px 110px 45px 45px;
+  background:#eee;box-shadow:inset 0 5px 15px rgba(255,255,255,0.5),0 10px 25px rgba(0,0,0,0.1);
+  transition:background 0.5s ease;
+  background-size:cover;
+  background-position:center;
 }
-.preview-label { margin-top: 1.5rem; font-weight: 700; color: var(--primary-warm); font-size: 1.1rem; }
+.preview-label{margin-top:1.5rem;font-weight:700;color:var(--primary-warm);font-size:1.1rem;}
 
-/* =========== LAB SLIP & FOOTER =========== */
-.form-container { max-width: 950px; margin: 0 auto 5rem; padding: 0 5%; }
-#printableLabSlip { background: white; padding: 3rem; border-radius: 20px; border: 1px solid #eee; }
-.form-section { margin-bottom: 1.5rem; border-bottom: 1px solid #f2f2f2; padding-bottom: 1rem; }
-.form-section h3 { color: var(--primary-warm); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.3rem; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.3rem; color: var(--mid-gray); }
-input, textarea, select { width: 100%; padding: 0.7rem; border: 1.5px solid #eee; border-radius: 8px; font-family: inherit; font-size: 1rem; }
+.form-container{max-width:950px;margin:0 auto 5rem;padding:0 5%;}
+#printableLabSlip{background:white;padding:3rem;border-radius:20px;border:1px solid #eee;}
+.form-section{margin-bottom:1.5rem;border-bottom:1px solid #f2f2f2;padding-bottom:1rem;}
+.form-section h3{color:var(--primary-warm);margin-bottom:1rem;font-family:'Playfair Display',serif;font-size:1.3rem;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+label{display:block;font-weight:700;font-size:0.85rem;margin-bottom:0.3rem;color:var(--mid-gray);}
+input,textarea,select{width:100%;padding:0.7rem;border:1.5px solid #eee;border-radius:8px;font-family:inherit;font-size:1rem;}
 
-.lab-preview-guard {
-    width: 100px; height: 50px; border-radius: 50px 50px 20px 20px;
-    background: #eee; margin-top: 10px;
-    box-shadow: inset 0 4px 8px rgba(255,255,255,0.3), 0 4px 10px rgba(0,0,0,0.1);
-    transition: background 0.5s ease;
+.lab-preview-guard{
+  width:100px;height:50px;border-radius:50px 50px 20px 20px;
+  background:#eee;margin-top:10px;
+  box-shadow:inset 0 4px 8px rgba(255,255,255,0.3),0 4px 10px rgba(0,0,0,0.1);
+  transition:background 0.5s ease;
+  background-size:cover;
+  background-position:center;
 }
 
-footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; margin-top: 5rem;}
-.footer-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: flex-start; }
-.footer-contact { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; text-align: right; }
-.footer-contact a { color: white; text-decoration: none; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 3rem; padding-top: 1.5rem; text-align: center; font-size: 0.85rem; opacity: 0.6; }
+footer{background:var(--deep-brown);color:white;padding:4rem 8% 2rem;margin-top:5rem;}
+.footer-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:2rem;align-items:flex-start;}
+.footer-contact{display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end;text-align:right;}
+.footer-contact a{color:white;text-decoration:none;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);margin-top:3rem;padding-top:1.5rem;text-align:center;font-size:0.85rem;opacity:0.6;}
 
-/* =========== WHATSAPP FLOAT BUTTON =========== */
-.wa-float {
-  position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
-  background: #25D366; color: white; border-radius: 50%;
-  width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 6px 20px rgba(37,211,102,0.5); text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.wa-float{
+  position:fixed;bottom:2rem;right:2rem;z-index:9999;
+  background:#25D366;color:white;border-radius:50%;
+  width:60px;height:60px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(37,211,102,0.5);text-decoration:none;
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
 }
-.wa-float:hover { transform: scale(1.12); box-shadow: 0 10px 30px rgba(37,211,102,0.6); }
-.wa-float svg { width: 32px; height: 32px; }
+.wa-float:hover{transform:scale(1.12);box-shadow:0 10px 30px rgba(37,211,102,0.6);}
+.wa-float svg{width:32px;height:32px;}
 
-/* =========== AUS IMAGE HOVER =========== */
-.colour-item:hover img { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2) !important; }
+.colour-item:hover img{transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,0.2)!important;}
 
-/* =========== PRINT MEDIA =========== */
-@media print {
-    @page { size: A4; margin: 1cm 1.5cm; }
-    nav, .btn-print, .section-header, footer, .hero, .cards-grid, .detail-container, .btn-back-to-form, .colour-chart-container, .preview-section { display: none !important; }
-    #labslip { display: block !important; padding-top: 0; }
-    .form-container { max-width: 100%; padding: 0; margin: 0; }
-    #printableLabSlip { box-shadow: none; border: none; padding: 0; }
-    input, textarea, select { border: none !important; border-bottom: 1px solid #eee !important; background: transparent; }
-    .print-only-header { display: flex !important; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2.5px solid #333; padding-bottom: 10px; }
-    .print-footer-sign { display: block !important; margin-top: 30px; }
-    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+@media print{
+  @page{size:A4;margin:1cm 1.5cm;}
+  nav,.btn-print,.section-header,footer,.hero,.cards-grid,.detail-container,.btn-back-to-form,.colour-chart-container,.preview-section{display:none!important;}
+  #labslip{display:block!important;padding-top:0;}
+  .form-container{max-width:100%;padding:0;margin:0;}
+  #printableLabSlip{box-shadow:none;border:none;padding:0;}
+  input,textarea,select{border:none!important;border-bottom:1px solid #eee!important;background:transparent;}
+  .print-only-header{display:flex!important;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2.5px solid #333;padding-bottom:10px;}
+  .print-footer-sign{display:block!important;margin-top:30px;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
 }
-.print-only-header, .print-footer-sign { display: none; }
+.print-only-header,.print-footer-sign{display:none;}
 
-.surgical-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.surgical-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
 
-@media (max-width: 768px) { 
-    .detail-grid, .footer-grid, .surgical-grid { grid-template-columns: 1fr; } 
-    .footer-contact { align-items: center; text-align: center; }
+@media(max-width:768px){
+  .detail-grid,.footer-grid,.surgical-grid{grid-template-columns:1fr;}
+  .footer-contact{align-items:center;text-align:center;}
 }
 </style>
 </head>
@@ -171,18 +161,18 @@ footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; mar
   </ul>
 </nav>
 
-<!-- WhatsApp floating button — visible on every page -->
 <a href="https://wa.me/61411482589" target="_blank" class="wa-float" title="Message Tsao on WhatsApp">
   <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<!-- ===================== HOME ===================== -->
 <section id="home" class="page active">
   <div class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
       <h1>Precision Digital <br>Laboratory Services.</h1>
       <p>Bespoke dental craftsmanship based in Como, Western Australia. We combine traditional expertise with advanced 3D technology.</p>
-      <a href="#labslip" style="display:inline-block; background:var(--deep-brown); color:white; padding:1rem 2.5rem; border-radius:50px; text-decoration:none; font-weight:700; margin-top:1.5rem;">Submit Digital Case</a>
+      <a href="#labslip" style="display:inline-block;background:var(--deep-brown);color:white;padding:1rem 2.5rem;border-radius:50px;text-decoration:none;font-weight:700;margin-top:1.5rem;">Submit Digital Case</a>
     </div>
   </div>
   <div class="section-header">
@@ -191,24 +181,19 @@ footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; mar
   </div>
   <div class="cards-grid">
     <div class="card" onclick="location.hash='#mouthguards'">
-      <!-- 3D Mouthguard Illustration -->
-      <div class="card-img" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display:flex; align-items:center; justify-content:center;">
+      <div class="card-img" style="background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%);display:flex;align-items:center;justify-content:center;">
         <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="mg1" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#ff9a5c"/><stop offset="60%" stop-color="#e8622a"/><stop offset="100%" stop-color="#a03010"/></radialGradient>
             <radialGradient id="mg2" cx="40%" cy="30%" r="60%"><stop offset="0%" stop-color="#ffb380"/><stop offset="100%" stop-color="#cc4400"/></radialGradient>
             <filter id="shadow1"><feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#00000033"/></filter>
           </defs>
-          <!-- Guard body -->
           <ellipse cx="80" cy="72" rx="68" ry="28" fill="#c04400" opacity="0.3"/>
           <path d="M12 60 Q12 30 80 28 Q148 30 148 60 Q148 85 80 88 Q12 85 12 60Z" fill="url(#mg1)" filter="url(#shadow1)"/>
-          <!-- Inner arch cutout -->
           <path d="M44 68 Q44 55 80 53 Q116 55 116 68 Q116 80 80 82 Q44 80 44 68Z" fill="url(#mg2)"/>
           <path d="M50 68 Q50 60 80 58 Q110 60 110 68 Q110 76 80 78 Q50 76 50 68Z" fill="#ff7744" opacity="0.5"/>
-          <!-- Shine highlights -->
           <ellipse cx="60" cy="40" rx="18" ry="6" fill="white" opacity="0.35" transform="rotate(-10 60 40)"/>
           <ellipse cx="90" cy="37" rx="8" ry="3" fill="white" opacity="0.2" transform="rotate(-5 90 37)"/>
-          <!-- Teeth bumps -->
           <rect x="48" y="54" width="10" height="7" rx="3" fill="#ffaa77" opacity="0.6"/>
           <rect x="61" y="52" width="10" height="8" rx="3" fill="#ffaa77" opacity="0.6"/>
           <rect x="75" y="51" width="10" height="9" rx="3" fill="#ffaa77" opacity="0.6"/>
@@ -218,44 +203,34 @@ footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; mar
       </div>
       <div class="card-body"><h3>Mouthguards</h3><p>Elite-level sports protection for all ages.</p></div>
     </div>
-
     <div class="card" onclick="location.hash='#splints'">
-      <!-- 3D Occlusal Splint Illustration -->
-      <div class="card-img" style="background: linear-gradient(135deg, #e0f4ff 0%, #b8dff5 100%); display:flex; align-items:center; justify-content:center;">
+      <div class="card-img" style="background:linear-gradient(135deg,#e0f4ff 0%,#b8dff5 100%);display:flex;align-items:center;justify-content:center;">
         <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="sp1" cx="40%" cy="30%" r="65%"><stop offset="0%" stop-color="#e8f6ff"/><stop offset="50%" stop-color="#90cef4"/><stop offset="100%" stop-color="#3a8fc7"/></radialGradient>
             <filter id="shadow2"><feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#00000022"/></filter>
           </defs>
-          <!-- Splint body — thinner, more clinical look -->
           <ellipse cx="80" cy="78" rx="62" ry="18" fill="#2a6fa8" opacity="0.2"/>
           <path d="M18 58 Q18 35 80 33 Q142 35 142 58 Q142 78 80 80 Q18 78 18 58Z" fill="url(#sp1)" filter="url(#shadow2)"/>
           <path d="M18 56 Q18 40 80 38 Q142 40 142 56" stroke="#6ab8e8" stroke-width="1.5" fill="none" opacity="0.5"/>
-          <!-- Inner horseshoe -->
           <path d="M48 66 Q48 54 80 52 Q112 54 112 66 Q112 74 80 75 Q48 74 48 66Z" fill="#c8e8f8" opacity="0.7"/>
-          <!-- Crystal clear shine -->
           <ellipse cx="58" cy="41" rx="20" ry="5" fill="white" opacity="0.5" transform="rotate(-8 58 41)"/>
           <ellipse cx="95" cy="38" rx="9" ry="3" fill="white" opacity="0.3" transform="rotate(-4 95 38)"/>
-          <!-- Hard acrylic texture lines -->
           <path d="M30 50 Q80 47 130 50" stroke="white" stroke-width="1" opacity="0.3" fill="none"/>
           <path d="M35 60 Q80 57 125 60" stroke="white" stroke-width="0.8" opacity="0.2" fill="none"/>
         </svg>
       </div>
       <div class="card-body"><h3>Occlusal Splints</h3><p>Superior comfort for TMJ and bruxism therapy.</p></div>
     </div>
-
     <div class="card" onclick="location.hash='#surgical'">
-      <!-- 3D Surgical Guide Illustration -->
-      <div class="card-img" style="background: linear-gradient(135deg, #f0fff4 0%, #c6f0d3 100%); display:flex; align-items:center; justify-content:center;">
+      <div class="card-img" style="background:linear-gradient(135deg,#f0fff4 0%,#c6f0d3 100%);display:flex;align-items:center;justify-content:center;">
         <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="sg1" cx="40%" cy="30%" r="65%"><stop offset="0%" stop-color="#b8f5d0"/><stop offset="50%" stop-color="#4ecb7a"/><stop offset="100%" stop-color="#1a7a40"/></radialGradient>
             <filter id="shadow3"><feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#00000022"/></filter>
           </defs>
-          <!-- Guide body -->
           <ellipse cx="80" cy="76" rx="62" ry="18" fill="#1a5c30" opacity="0.2"/>
           <path d="M18 58 Q18 35 80 33 Q142 35 142 58 Q142 76 80 78 Q18 76 18 58Z" fill="url(#sg1)" filter="url(#shadow3)"/>
-          <!-- Sleeves / drill guide holes -->
           <circle cx="50" cy="50" r="7" fill="#1a6b38" opacity="0.7"/>
           <circle cx="50" cy="50" r="4.5" fill="#0d3d20"/>
           <circle cx="50" cy="50" r="2" fill="#1a9948" opacity="0.6"/>
@@ -265,9 +240,7 @@ footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; mar
           <circle cx="110" cy="50" r="7" fill="#1a6b38" opacity="0.7"/>
           <circle cx="110" cy="50" r="4.5" fill="#0d3d20"/>
           <circle cx="110" cy="50" r="2" fill="#1a9948" opacity="0.6"/>
-          <!-- Shine -->
           <ellipse cx="58" cy="38" rx="18" ry="5" fill="white" opacity="0.4" transform="rotate(-8 58 38)"/>
-          <!-- Precision tick marks -->
           <line x1="43" y1="62" x2="57" y2="62" stroke="white" stroke-width="1.2" opacity="0.5"/>
           <line x1="73" y1="60" x2="87" y2="60" stroke="white" stroke-width="1.2" opacity="0.5"/>
           <line x1="103" y1="62" x2="117" y2="62" stroke="white" stroke-width="1.2" opacity="0.5"/>
@@ -276,18 +249,16 @@ footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; mar
       <div class="card-body"><h3>Surgical Guides</h3><p>Predictable implant placement via 3D precision.</p></div>
     </div>
   </div>
-  <!-- ===== SOCIAL FEED SECTION ===== -->
-  <div style="max-width:1000px; margin:0 auto 5rem; padding:0 5%;">
-    <div style="text-align:center; margin-bottom:2rem;">
-      <h2 style="font-family:'Playfair Display',serif; font-size:2rem;">Follow Our Latest Work</h2>
-      <p style="opacity:0.7; margin-top:0.4rem;">See what we've been crafting — live from our Facebook page</p>
+
+  <!-- Facebook Feed -->
+  <div style="max-width:1000px;margin:0 auto 5rem;padding:0 5%;">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:2rem;">Follow Our Latest Work</h2>
+      <p style="opacity:0.7;margin-top:0.4rem;">See what we've been crafting — live from our Facebook page</p>
     </div>
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-      src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v25.0&appId=APP_ID">
-    </script>
-    <!-- Full-width scrollable Facebook embed -->
-    <div style="background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.07); min-height:600px;">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v25.0"></script>
+    <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.07);min-height:600px;">
       <div class="fb-page"
         data-href="https://www.facebook.com/profile.php?id=61578306352843"
         data-tabs="timeline"
@@ -305,6 +276,7 @@ footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; mar
   </div>
 </section>
 
+<!-- ===================== MOUTHGUARDS ===================== -->
 <section id="mouthguards" class="page">
   <div class="section-header"><h2>Custom Mouthguards</h2></div>
   <div class="detail-container">
@@ -323,289 +295,163 @@ footer { background: var(--deep-brown); color: white; padding: 4rem 8% 2rem; mar
       </div>
     </div>
 
+    <!-- ✅ FIX: Preview section with correct IDs -->
     <div class="preview-section">
-      <h3 style="font-family:'Playfair Display'; margin-bottom: 0.5rem;">Visual Preview</h3>
-      <p style="font-size: 0.9rem; opacity: 0.6; margin-bottom: 1.5rem;">Select a colour below to see how it looks</p>
+      <h3 style="font-family:'Playfair Display';margin-bottom:0.5rem;">Visual Preview</h3>
+      <p style="font-size:0.9rem;opacity:0.6;margin-bottom:1.5rem;">Select a colour below to see how it looks</p>
       <div id="previewGuard" class="preview-guard-shape"></div>
       <p id="previewName" class="preview-label">No colour selected</p>
     </div>
 
+    <!-- Basic Colours -->
     <div class="colour-chart-container">
-      <h3 style="text-align: center; font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 0.5rem;">Basic Colour Chart</h3>
-      <p style="text-align: center; margin-bottom: 2rem; opacity: 0.7;">36 Vibrant Options to Suit Your Style</p>
+      <h3 style="text-align:center;font-family:'Playfair Display';font-size:2rem;margin-bottom:0.5rem;">Basic Colour Chart</h3>
+      <p style="text-align:center;margin-bottom:2rem;opacity:0.7;">36 Vibrant Options to Suit Your Style</p>
       <div class="colour-grid">
-        <div class="colour-item" onclick="selectColor('#000000', '01 Black')"><div class="colour-swatch" style="background:#000000;"></div><span class="colour-name">01 Black</span></div>
-        <div class="colour-item" onclick="selectColor('#000080', '02 Dark Blue')"><div class="colour-swatch" style="background:#000080;"></div><span class="colour-name">02 Dark Blue</span></div>
-        <div class="colour-item" onclick="selectColor('#800000', '03 Maroon')"><div class="colour-swatch" style="background:#800000;"></div><span class="colour-name">03 Maroon</span></div>
-        <div class="colour-item" onclick="selectColor('#C0C0C0', '04 Silver')"><div class="colour-swatch" style="background:#C0C0C0;"></div><span class="colour-name">04 Silver</span></div>
-        <div class="colour-item" onclick="selectColor('#D4AF37', '05 Gold')"><div class="colour-swatch" style="background:#D4AF37;"></div><span class="colour-name">05 Gold</span></div>
-        <div class="colour-item" onclick="selectColor('#4169E1', '06 Royal Blue')"><div class="colour-swatch" style="background:#4169E1;"></div><span class="colour-name">06 Royal Blue</span></div>
-        <div class="colour-item" onclick="selectColor('#C8A2C8', '07 Lilac')"><div class="colour-swatch" style="background:#C8A2C8;"></div><span class="colour-name">07 Lilac</span></div>
-        <div class="colour-item" onclick="selectColor('#87CEEB', '08 Sky Blue')"><div class="colour-swatch" style="background:#87CEEB;"></div><span class="colour-name">08 Sky Blue</span></div>
-        <div class="colour-item" onclick="selectColor('#008000', '09 Green')"><div class="colour-swatch" style="background:#008000;"></div><span class="colour-name">09 Green</span></div>
-        <div class="colour-item" onclick="selectColor('#FFC0CB', '10 Pink')"><div class="colour-swatch" style="background:#FFC0CB;"></div><span class="colour-name">10 Pink</span></div>
-        <div class="colour-item" onclick="selectColor('#FF0000', '11 Red')"><div class="colour-swatch" style="background:#FF0000;"></div><span class="colour-name">11 Red</span></div>
-        <div class="colour-item" onclick="selectColor('#40E0D0', '12 Turquoise')"><div class="colour-swatch" style="background:#40E0D0;"></div><span class="colour-name">12 Turquoise</span></div>
-        <div class="colour-item" onclick="selectColor('#FFFFFF', '13 White')"><div class="colour-swatch" style="background:#FFFFFF; border:1px solid #ddd;"></div><span class="colour-name">13 White</span></div>
-        <div class="colour-item" onclick="selectColor('#FFFF00', '14 Yellow')"><div class="colour-swatch" style="background:#FFFF00;"></div><span class="colour-name">14 Yellow</span></div>
-        <div class="colour-item" onclick="selectColor('#FF5F1F', '15 Fluro Orange')"><div class="colour-swatch" style="background:#FF5F1F;"></div><span class="colour-name">15 Fluro Orange</span></div>
-        <div class="colour-item" onclick="selectColor('#CCFF00', '16 Fluro Yellow')"><div class="colour-swatch" style="background:#CCFF00;"></div><span class="colour-name">16 Fluro Yellow</span></div>
-        <div class="colour-item" onclick="selectColor('#39FF14', '17 Fluro Green')"><div class="colour-swatch" style="background:#39FF14;"></div><span class="colour-name">17 Fluro Green</span></div>
-        <div class="colour-item" onclick="selectColor('#E0F7FA', '18 Clear')"><div class="colour-swatch" style="background:#E0F7FA; opacity:0.6; border:1px solid #ddd;"></div><span class="colour-name">18 Clear</span></div>
-        <div class="colour-item" onclick="selectColor('#FF69B4', '19 Fluro Pink')"><div class="colour-swatch" style="background:#FF69B4;"></div><span class="colour-name">19 Fluro Pink</span></div>
-        <div class="colour-item" onclick="selectColor('#004225', '20 Rac Green')"><div class="colour-swatch" style="background:#004225;"></div><span class="colour-name">20 Rac Green</span></div>
-        <div class="colour-item" onclick="selectColor('#5E3023', '21 Brown')"><div class="colour-swatch" style="background:#5E3023;"></div><span class="colour-name">21 Brown</span></div>
-        <div class="colour-item" onclick="selectColor('#FF3131', '22 Fluro Red')"><div class="colour-swatch" style="background:#FF3131;"></div><span class="colour-name">22 Fluro Red</span></div>
-        <div class="colour-item" onclick="selectColor('#8DB600', '23 Apple')"><div class="colour-swatch" style="background:#8DB600;"></div><span class="colour-name">23 Apple</span></div>
-        <div class="colour-item" onclick="selectColor('#B57EDC', '24 Lavender')"><div class="colour-swatch" style="background:#B57EDC;"></div><span class="colour-name">24 Lavender</span></div>
-        <div class="colour-item" onclick="selectColor('#DE3163', '25 Cerise')"><div class="colour-swatch" style="background:#DE3163;"></div><span class="colour-name">25 Cerise</span></div>
-        <div class="colour-item" onclick="selectColor('#D2B48C', '26 Sandstone')"><div class="colour-swatch" style="background:#D2B48C;"></div><span class="colour-name">26 Sandstone</span></div>
-        <div class="colour-item" onclick="selectColor('#D2042D', '27 Cherry')"><div class="colour-swatch" style="background:#D2042D;"></div><span class="colour-name">27 Cherry</span></div>
-        <div class="colour-item" onclick="selectColor('#9966CC', '28 Amethyst')"><div class="colour-swatch" style="background:#9966CC;"></div><span class="colour-name">28 Amethyst</span></div>
-        <div class="colour-item" onclick="selectColor('#008080', '29 Teal')"><div class="colour-swatch" style="background:#008080;"></div><span class="colour-name">29 Teal</span></div>
-        <div class="colour-item" onclick="selectColor('#FFCC00', '30 Aussie Yellow')"><div class="colour-swatch" style="background:#FFCC00;"></div><span class="colour-name">30 Aussie Yellow</span></div>
-        <div class="colour-item" onclick="selectColor('#708090', '31 Metallic Mist')"><div class="colour-swatch" style="background:#708090;"></div><span class="colour-name">31 Metallic Mist</span></div>
-        <div class="colour-item" onclick="selectColor('#FF8B8B', '32 Shrimp')"><div class="colour-swatch" style="background:#FF8B8B;"></div><span class="colour-name">32 Shrimp</span></div>
-        <div class="colour-item" onclick="selectColor('#006400', '33 Metallic Green')"><div class="colour-swatch" style="background:#006400;"></div><span class="colour-name">33 Metallic Green</span></div>
-        <div class="colour-item" onclick="selectColor('#6495ED', '34 Cornflour Blue')"><div class="colour-swatch" style="background:#6495ED;"></div><span class="colour-name">34 Cornflour Blue</span></div>
-        <div class="colour-item" onclick="selectColor('#2E8B57', '35 Leaf Green Bio')"><div class="colour-swatch" style="background:#2E8B57;"></div><span class="colour-name">35 Leaf Green Bio</span></div>
-        <div class="colour-item" onclick="selectColor('#FF8C00', '36 Solid Orange')"><div class="colour-swatch" style="background:#FF8C00;"></div><span class="colour-name">36 Solid Orange</span></div>
+        <div class="colour-item" onclick="selectColor('#000000','01 Black')"><div class="colour-swatch" style="background:#000000;"></div><span class="colour-name">01 Black</span></div>
+        <div class="colour-item" onclick="selectColor('#000080','02 Dark Blue')"><div class="colour-swatch" style="background:#000080;"></div><span class="colour-name">02 Dark Blue</span></div>
+        <div class="colour-item" onclick="selectColor('#800000','03 Maroon')"><div class="colour-swatch" style="background:#800000;"></div><span class="colour-name">03 Maroon</span></div>
+        <div class="colour-item" onclick="selectColor('#C0C0C0','04 Silver')"><div class="colour-swatch" style="background:#C0C0C0;"></div><span class="colour-name">04 Silver</span></div>
+        <div class="colour-item" onclick="selectColor('#D4AF37','05 Gold')"><div class="colour-swatch" style="background:#D4AF37;"></div><span class="colour-name">05 Gold</span></div>
+        <div class="colour-item" onclick="selectColor('#4169E1','06 Royal Blue')"><div class="colour-swatch" style="background:#4169E1;"></div><span class="colour-name">06 Royal Blue</span></div>
+        <div class="colour-item" onclick="selectColor('#C8A2C8','07 Lilac')"><div class="colour-swatch" style="background:#C8A2C8;"></div><span class="colour-name">07 Lilac</span></div>
+        <div class="colour-item" onclick="selectColor('#87CEEB','08 Sky Blue')"><div class="colour-swatch" style="background:#87CEEB;"></div><span class="colour-name">08 Sky Blue</span></div>
+        <div class="colour-item" onclick="selectColor('#008000','09 Green')"><div class="colour-swatch" style="background:#008000;"></div><span class="colour-name">09 Green</span></div>
+        <div class="colour-item" onclick="selectColor('#FFC0CB','10 Pink')"><div class="colour-swatch" style="background:#FFC0CB;"></div><span class="colour-name">10 Pink</span></div>
+        <div class="colour-item" onclick="selectColor('#FF0000','11 Red')"><div class="colour-swatch" style="background:#FF0000;"></div><span class="colour-name">11 Red</span></div>
+        <div class="colour-item" onclick="selectColor('#40E0D0','12 Turquoise')"><div class="colour-swatch" style="background:#40E0D0;"></div><span class="colour-name">12 Turquoise</span></div>
+        <div class="colour-item" onclick="selectColor('#FFFFFF','13 White')"><div class="colour-swatch" style="background:#FFFFFF;border:1px solid #ddd;"></div><span class="colour-name">13 White</span></div>
+        <div class="colour-item" onclick="selectColor('#FFFF00','14 Yellow')"><div class="colour-swatch" style="background:#FFFF00;"></div><span class="colour-name">14 Yellow</span></div>
+        <div class="colour-item" onclick="selectColor('#FF5F1F','15 Fluro Orange')"><div class="colour-swatch" style="background:#FF5F1F;"></div><span class="colour-name">15 Fluro Orange</span></div>
+        <div class="colour-item" onclick="selectColor('#CCFF00','16 Fluro Yellow')"><div class="colour-swatch" style="background:#CCFF00;"></div><span class="colour-name">16 Fluro Yellow</span></div>
+        <div class="colour-item" onclick="selectColor('#39FF14','17 Fluro Green')"><div class="colour-swatch" style="background:#39FF14;"></div><span class="colour-name">17 Fluro Green</span></div>
+        <div class="colour-item" onclick="selectColor('#E0F7FA','18 Clear')"><div class="colour-swatch" style="background:#E0F7FA;opacity:0.6;border:1px solid #ddd;"></div><span class="colour-name">18 Clear</span></div>
+        <div class="colour-item" onclick="selectColor('#FF69B4','19 Fluro Pink')"><div class="colour-swatch" style="background:#FF69B4;"></div><span class="colour-name">19 Fluro Pink</span></div>
+        <div class="colour-item" onclick="selectColor('#004225','20 Rac Green')"><div class="colour-swatch" style="background:#004225;"></div><span class="colour-name">20 Rac Green</span></div>
+        <div class="colour-item" onclick="selectColor('#5E3023','21 Brown')"><div class="colour-swatch" style="background:#5E3023;"></div><span class="colour-name">21 Brown</span></div>
+        <div class="colour-item" onclick="selectColor('#FF3131','22 Fluro Red')"><div class="colour-swatch" style="background:#FF3131;"></div><span class="colour-name">22 Fluro Red</span></div>
+        <div class="colour-item" onclick="selectColor('#8DB600','23 Apple')"><div class="colour-swatch" style="background:#8DB600;"></div><span class="colour-name">23 Apple</span></div>
+        <div class="colour-item" onclick="selectColor('#B57EDC','24 Lavender')"><div class="colour-swatch" style="background:#B57EDC;"></div><span class="colour-name">24 Lavender</span></div>
+        <div class="colour-item" onclick="selectColor('#DE3163','25 Cerise')"><div class="colour-swatch" style="background:#DE3163;"></div><span class="colour-name">25 Cerise</span></div>
+        <div class="colour-item" onclick="selectColor('#D2B48C','26 Sandstone')"><div class="colour-swatch" style="background:#D2B48C;"></div><span class="colour-name">26 Sandstone</span></div>
+        <div class="colour-item" onclick="selectColor('#D2042D','27 Cherry')"><div class="colour-swatch" style="background:#D2042D;"></div><span class="colour-name">27 Cherry</span></div>
+        <div class="colour-item" onclick="selectColor('#9966CC','28 Amethyst')"><div class="colour-swatch" style="background:#9966CC;"></div><span class="colour-name">28 Amethyst</span></div>
+        <div class="colour-item" onclick="selectColor('#008080','29 Teal')"><div class="colour-swatch" style="background:#008080;"></div><span class="colour-name">29 Teal</span></div>
+        <div class="colour-item" onclick="selectColor('#FFCC00','30 Aussie Yellow')"><div class="colour-swatch" style="background:#FFCC00;"></div><span class="colour-name">30 Aussie Yellow</span></div>
+        <div class="colour-item" onclick="selectColor('#708090','31 Metallic Mist')"><div class="colour-swatch" style="background:#708090;"></div><span class="colour-name">31 Metallic Mist</span></div>
+        <div class="colour-item" onclick="selectColor('#FF8B8B','32 Shrimp')"><div class="colour-swatch" style="background:#FF8B8B;"></div><span class="colour-name">32 Shrimp</span></div>
+        <div class="colour-item" onclick="selectColor('#006400','33 Metallic Green')"><div class="colour-swatch" style="background:#006400;"></div><span class="colour-name">33 Metallic Green</span></div>
+        <div class="colour-item" onclick="selectColor('#6495ED','34 Cornflour Blue')"><div class="colour-swatch" style="background:#6495ED;"></div><span class="colour-name">34 Cornflour Blue</span></div>
+        <div class="colour-item" onclick="selectColor('#2E8B57','35 Leaf Green Bio')"><div class="colour-swatch" style="background:#2E8B57;"></div><span class="colour-name">35 Leaf Green Bio</span></div>
+        <div class="colour-item" onclick="selectColor('#FF8C00','36 Solid Orange')"><div class="colour-swatch" style="background:#FF8C00;"></div><span class="colour-name">36 Solid Orange</span></div>
       </div>
     </div>
 
+    <!-- AFL Team Collection -->
     <div class="colour-chart-container">
-      <h3 style="text-align: center; font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 0.5rem;">AFL Team Collection</h3>
-      <p style="text-align: center; margin-bottom: 2rem; opacity: 0.7;">Popular Triple-Stripe Team Combinations</p>
+      <h3 style="text-align:center;font-family:'Playfair Display';font-size:2rem;margin-bottom:0.5rem;">AFL Team Collection</h3>
+      <p style="text-align:center;margin-bottom:2rem;opacity:0.7;">Popular Triple-Stripe Team Combinations</p>
       <div class="colour-grid">
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #dcdcdc 33%, #0b3c6f 33%, #0b3c6f 66%, #dcdcdc 66%)', 'AFL1 (Silver/Navy/Silver)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #dcdcdc 33%, #0b3c6f 33%, #0b3c6f 66%, #dcdcdc 66%);"></div>
-          <span class="colour-name">AFL1</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #e12b2b 33%, #ffffff 33%, #ffffff 66%, #e12b2b 66%)', 'AFL2 (Red/White/Red)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #e12b2b 33%, #ffffff 33%, #ffffff 66%, #e12b2b 66%);"></div>
-          <span class="colour-name">AFL2</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #000 33%, #ffffff 33%, #ffffff 66%, #000 66%)', 'AFL3 (Black/White/Black)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #000 33%, #ffffff 33%, #ffffff 66%, #000 66%);"></div>
-          <span class="colour-name">AFL3</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #0b3c6f 33%, #ffffff 33%, #ffffff 66%, #0b3c6f 66%)', 'AFL4 (Navy/White/Navy)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #0b3c6f 33%, #ffffff 33%, #ffffff 66%, #0b3c6f 66%);"></div>
-          <span class="colour-name">AFL4</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #000 33%, #ffd700 33%, #ffd700 66%, #000 66%)', 'AFL5 (Black/Gold/Black)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #000 33%, #ffd700 33%, #ffd700 66%, #000 66%);"></div>
-          <span class="colour-name">AFL5</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #6b3e26 33%, #ffd700 33%, #ffd700 66%, #6b3e26 66%)', 'AFL6 (Brown/Gold/Brown)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #6b3e26 33%, #ffd700 33%, #ffd700 66%, #6b3e26 66%);"></div>
-          <span class="colour-name">AFL6</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #000 33%, #d61c1c 33%, #d61c1c 66%, #000 66%)', 'AFL7 (Black/Red/Black)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #000 33%, #d61c1c 33%, #d61c1c 66%, #000 66%);"></div>
-          <span class="colour-name">AFL7</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #0b3c6f 33%, #f05a28 33%, #f05a28 66%, #0b3c6f 66%)', 'AFL8 (Navy/Orange/Navy)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #0b3c6f 33%, #f05a28 33%, #f05a28 66%, #0b3c6f 66%);"></div>
-          <span class="colour-name">AFL8</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #1e73b3 33%, #dcdcdc 33%, #dcdcdc 66%, #1e73b3 66%)', 'AFL9 (Blue/Silver/Blue)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #1e73b3 33%, #dcdcdc 33%, #dcdcdc 66%, #1e73b3 66%);"></div>
-          <span class="colour-name">AFL9</span>
-        </div>
-        <div class="colour-item" onclick="selectColor('linear-gradient(to right, #e12b2b 33%, #ffffff 33%, #ffffff 66%, #000 66%)', 'AFL10 (Red/White/Black)')">
-          <div class="colour-swatch" style="background: linear-gradient(to right, #e12b2b 33%, #ffffff 33%, #ffffff 66%, #000 66%);"></div>
-          <span class="colour-name">AFL10</span>
-        </div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#dcdcdc 33%,#0b3c6f 33%,#0b3c6f 66%,#dcdcdc 66%)','AFL1 (Silver/Navy/Silver)')"><div class="colour-swatch" style="background:linear-gradient(to right,#dcdcdc 33%,#0b3c6f 33%,#0b3c6f 66%,#dcdcdc 66%);"></div><span class="colour-name">AFL1</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#e12b2b 33%,#ffffff 33%,#ffffff 66%,#e12b2b 66%)','AFL2 (Red/White/Red)')"><div class="colour-swatch" style="background:linear-gradient(to right,#e12b2b 33%,#ffffff 33%,#ffffff 66%,#e12b2b 66%);"></div><span class="colour-name">AFL2</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#000 33%,#ffffff 33%,#ffffff 66%,#000 66%)','AFL3 (Black/White/Black)')"><div class="colour-swatch" style="background:linear-gradient(to right,#000 33%,#ffffff 33%,#ffffff 66%,#000 66%);"></div><span class="colour-name">AFL3</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#0b3c6f 33%,#ffffff 33%,#ffffff 66%,#0b3c6f 66%)','AFL4 (Navy/White/Navy)')"><div class="colour-swatch" style="background:linear-gradient(to right,#0b3c6f 33%,#ffffff 33%,#ffffff 66%,#0b3c6f 66%);"></div><span class="colour-name">AFL4</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#000 33%,#ffd700 33%,#ffd700 66%,#000 66%)','AFL5 (Black/Gold/Black)')"><div class="colour-swatch" style="background:linear-gradient(to right,#000 33%,#ffd700 33%,#ffd700 66%,#000 66%);"></div><span class="colour-name">AFL5</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#6b3e26 33%,#ffd700 33%,#ffd700 66%,#6b3e26 66%)','AFL6 (Brown/Gold/Brown)')"><div class="colour-swatch" style="background:linear-gradient(to right,#6b3e26 33%,#ffd700 33%,#ffd700 66%,#6b3e26 66%);"></div><span class="colour-name">AFL6</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#000 33%,#d61c1c 33%,#d61c1c 66%,#000 66%)','AFL7 (Black/Red/Black)')"><div class="colour-swatch" style="background:linear-gradient(to right,#000 33%,#d61c1c 33%,#d61c1c 66%,#000 66%);"></div><span class="colour-name">AFL7</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#0b3c6f 33%,#f05a28 33%,#f05a28 66%,#0b3c6f 66%)','AFL8 (Navy/Orange/Navy)')"><div class="colour-swatch" style="background:linear-gradient(to right,#0b3c6f 33%,#f05a28 33%,#f05a28 66%,#0b3c6f 66%);"></div><span class="colour-name">AFL8</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#1e73b3 33%,#dcdcdc 33%,#dcdcdc 66%,#1e73b3 66%)','AFL9 (Blue/Silver/Blue)')"><div class="colour-swatch" style="background:linear-gradient(to right,#1e73b3 33%,#dcdcdc 33%,#dcdcdc 66%,#1e73b3 66%);"></div><span class="colour-name">AFL9</span></div>
+        <div class="colour-item" onclick="selectColor('linear-gradient(to right,#e12b2b 33%,#ffffff 33%,#ffffff 66%,#000 66%)','AFL10 (Red/White/Black)')"><div class="colour-swatch" style="background:linear-gradient(to right,#e12b2b 33%,#ffffff 33%,#ffffff 66%,#000 66%);"></div><span class="colour-name">AFL10</span></div>
       </div>
     </div>
 
+    <!-- AUS Marble Range — ✅ FIX: uses selectColorImg() for image-based colours -->
     <div class="colour-chart-container">
-  <h3 style="text-align: center; font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 0.5rem;">Designer Colours — AUS Marble Range</h3>
-  <p style="text-align: center; margin-bottom: 2rem; opacity: 0.7;">Real Multi-Colour Marble Photos (Click to select)</p>
-  
-  <div class="colour-grid">
-    <div class="colour-item" onclick="selectColor('url(AUS1.png)', 'AUS1 Green Marble')">
-      <img src="AUS1.png" alt="AUS1" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS1 </span>
+      <h3 style="text-align:center;font-family:'Playfair Display';font-size:2rem;margin-bottom:0.5rem;">Designer Colours — AUS Marble Range</h3>
+      <p style="text-align:center;margin-bottom:2rem;opacity:0.7;">Real Multi-Colour Marble Photos (Click to select)</p>
+      <div class="colour-grid">
+        <div class="colour-item" onclick="selectColorImg('AUS1.png','AUS1 Green Marble')"><img src="AUS1.png" alt="AUS1" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS1</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS2.png','AUS2 Teal Purple')"><img src="AUS2.png" alt="AUS2" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS2</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS3.png','AUS3 Pink Blue')"><img src="AUS3.png" alt="AUS3" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS3</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS4.png','AUS4 Blue Pink')"><img src="AUS4.png" alt="AUS4" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS4</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS5.png','AUS5 Blue Pink Purple')"><img src="AUS5.png" alt="AUS5" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS5</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS6.png','AUS6 Rainbow')"><img src="AUS6.png" alt="AUS6" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS6</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS7.png','AUS7 Cotton Candy')"><img src="AUS7.png" alt="AUS7" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS7</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS8.png','AUS8 Ocean Breeze')"><img src="AUS8.png" alt="AUS8" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS8</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS9.png','AUS9 Sunset')"><img src="AUS9.png" alt="AUS9" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS9</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS10.png','AUS10 Berry Mix')"><img src="AUS10.png" alt="AUS10" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS10</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS11.png','AUS11 Tropical')"><img src="AUS11.png" alt="AUS11" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS11</span></div>
+        <div class="colour-item" onclick="selectColorImg('AUS12.png','AUS12 Galaxy')"><img src="AUS12.png" alt="AUS12" style="width:70px;height:70px;object-fit:cover;border-radius:50%;margin:0 auto 0.8rem;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.1);display:block;transition:0.3s;"><span class="colour-name">AUS12</span></div>
+      </div>
+      <p class="colour-note">* Marble patterns vary slightly by production.</p>
     </div>
-    <div class="colour-item" onclick="selectColor('url(AUS2.png)', 'AUS2 Teal Purple')">
-      <img src="AUS2.png" alt="AUS2" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS2 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS3.png)', 'AUS3 Pink Blue')">
-      <img src="AUS3.png" alt="AUS3" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS3 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS4.png)', 'AUS4 Blue Pink')">
-      <img src="AUS4.png" alt="AUS4" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS4 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS5.png)', 'AUS5 Blue Pink Purple')">
-      <img src="AUS5.png" alt="AUS5" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS5 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS6.png)', 'AUS6 Rainbow')">
-      <img src="AUS6.png" alt="AUS6" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS6 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS7.png)', 'AUS7 Cotton Candy')">
-      <img src="AUS7.png" alt="AUS7" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS7 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS8.png)', 'AUS8 Ocean Breeze')">
-      <img src="AUS8.png" alt="AUS8" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS8 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS9.png)', 'AUS9 Sunset')">
-      <img src="AUS9.png" alt="AUS9" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS9 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS10.png)', 'AUS10 Berry Mix')">
-      <img src="AUS10.png" alt="AUS10" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS10 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS11.png)', 'AUS11 Tropical')">
-      <img src="AUS11.png" alt="AUS11" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS11 </span>
-    </div>
-    <div class="colour-item" onclick="selectColor('url(AUS12.png)', 'AUS12 Galaxy')">
-      <img src="AUS12.png" alt="AUS12" style="width:70px; height:70px; object-fit:cover; border-radius:50%; margin:0 auto 0.8rem; border:3px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.1); display:block; transition:0.3s;">
-      <span class="colour-name">AUS12 </span>
-    </div>
-  </div>
-  <p class="colour-note">* Marble patterns vary slightly by production.</p>
-</div>
-
-<script>
-function selectColor(val, name) {
-    const preview = document.getElementById('previewGuard');
-    const previewText = document.getElementById('previewName');
-    const labInput = document.getElementById('selectedColorInput');
-    const labPreview = document.getElementById('labColorPreview');
-
-    // 應用背景（支持顏色與圖片 url）
-    preview.style.background = val;
-    preview.style.backgroundSize = 'cover';
-    preview.style.backgroundPosition = 'center';
-    
-    previewText.innerText = name;
-    
-    // 自動填入 Lab Slip
-    if(labInput) labInput.value = name;
-    if(labPreview) {
-        labPreview.style.background = val;
-        labPreview.style.backgroundSize = 'cover';
-    }
-}
-</script>
   </div>
 </section>
 
+<!-- ===================== SPLINTS ===================== -->
 <section id="splints" class="page">
   <div class="section-header"><h2>Occlusal Splints</h2></div>
   <div class="detail-container">
-    <div class="detail-text" style="max-width:800px; margin:0 auto; text-align:center;">
+    <div class="detail-text" style="max-width:800px;margin:0 auto;text-align:center;">
       <p>Bespoke therapeutic appliances for bruxism and TMJ disorders.</p>
       <a href="#labslip" class="btn-back-to-form" style="margin-top:2rem;">Proceed to Lab Slip</a>
     </div>
   </div>
 </section>
 
+<!-- ===================== SURGICAL ===================== -->
 <section id="surgical" class="page">
-  <div class="section-header"><h2>Surgical Guides</h2>
+  <div class="section-header">
+    <h2>Surgical Guides</h2>
     <p>High-precision 3D printed guides for predictable implant placement.</p>
   </div>
   <div class="detail-container">
-
-    <!-- Two Options -->
     <div class="surgical-grid" style="margin-bottom:3rem;">
-      
-      <div style="background:#fff; border-radius:25px; padding:2.5rem; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
-        <div style="font-size:2.5rem; margin-bottom:1rem;">🦷</div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--primary-warm); margin-bottom:1rem;">Tooth-Supported Guide</h3>
-        <p style="margin-bottom:1rem; opacity:0.8;">Ideal for partially edentulous cases where remaining teeth provide stable anchorage for the guide. Offers excellent accuracy with minimal chair time.</p>
-        <ul style="list-style:none; margin-bottom:1.5rem;">
-          <li style="padding:0.4rem 0; padding-left:1.5rem; position:relative;">
-            <span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>
-            Requires existing dentition for support
-          </li>
-          <li style="padding:0.4rem 0; padding-left:1.5rem; position:relative;">
-            <span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>
-            High positional accuracy
-          </li>
-          <li style="padding:0.4rem 0; padding-left:1.5rem; position:relative;">
-            <span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>
-            No fixation pins required
-          </li>
-          <li style="padding:0.4rem 0; padding-left:1.5rem; position:relative;">
-            <span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>
-            Fast turnaround
-          </li>
+      <div style="background:#fff;border-radius:25px;padding:2.5rem;box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🦷</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--primary-warm);margin-bottom:1rem;">Tooth-Supported Guide</h3>
+        <p style="margin-bottom:1rem;opacity:0.8;">Ideal for partially edentulous cases where remaining teeth provide stable anchorage for the guide.</p>
+        <ul style="list-style:none;margin-bottom:1.5rem;">
+          <li style="padding:0.4rem 0;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>Requires existing dentition for support</li>
+          <li style="padding:0.4rem 0;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>High positional accuracy</li>
+          <li style="padding:0.4rem 0;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>No fixation pins required</li>
+          <li style="padding:0.4rem 0;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>Fast turnaround</li>
         </ul>
         <a href="#labslip" class="btn-back-to-form">Request This Guide</a>
       </div>
-
-      <div style="background:#fff; border-radius:25px; padding:2.5rem; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
-        <div style="font-size:2.5rem; margin-bottom:1rem;">🔩</div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--primary-warm); margin-bottom:1rem;">Bone / Tissue-Supported Guide</h3>
-        <p style="margin-bottom:1rem; opacity:0.8;">Designed for fully edentulous arches or cases with insufficient remaining teeth. Stabilised directly on soft tissue or bone with fixation pins.</p>
-        <ul style="list-style:none; margin-bottom:1.5rem;">
-          <li style="padding:0.4rem 0; padding-left:1.5rem; position:relative;">
-            <span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>
-            Suits fully edentulous patients
-          </li>
-          <li style="padding:0.4rem 0; padding-left:1.5rem; position:relative;">
-            <span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>
-            Fixation pin stabilisation
-          </li>
-          <li style="padding:0.4rem 0; padding-left:1.5rem; position:relative;">
-            <span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>
-            CBCT scan required
-          </li>
-          <li style="padding:0.4rem 0; padding-left:1.5rem; position:relative;">
-            <span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>
-            Full-arch implant planning
-          </li>
+      <div style="background:#fff;border-radius:25px;padding:2.5rem;box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🔩</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--primary-warm);margin-bottom:1rem;">Bone / Tissue-Supported Guide</h3>
+        <p style="margin-bottom:1rem;opacity:0.8;">Designed for fully edentulous arches or cases with insufficient remaining teeth.</p>
+        <ul style="list-style:none;margin-bottom:1.5rem;">
+          <li style="padding:0.4rem 0;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>Suits fully edentulous patients</li>
+          <li style="padding:0.4rem 0;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>Fixation pin stabilisation</li>
+          <li style="padding:0.4rem 0;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>CBCT scan required</li>
+          <li style="padding:0.4rem 0;padding-left:1.5rem;position:relative;"><span style="position:absolute;left:0;color:var(--primary-warm);font-size:1.3rem;line-height:1;">•</span>Full-arch implant planning</li>
         </ul>
         <a href="#labslip" class="btn-back-to-form">Request This Guide</a>
       </div>
-
     </div>
 
-    <!-- Case Gallery — powered by Google Photos embed -->
-    <div style="background:#fff; border-radius:25px; padding:3rem; box-shadow:0 10px 30px rgba(0,0,0,0.05); text-align:center; margin-bottom:3rem;">
-      <h3 style="font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:0.5rem;">Case Gallery</h3>
-      <p style="opacity:0.7; margin-bottom:2rem;">Our latest surgical guide cases — updated automatically via Google Photos</p>
-
-     <section id="case-gallery" style="padding: 40px 0;">
-    <div class="container">
-        <script src="https://cdn.jsdelivr.net/npm/publicalbum@latest/embed-ui.min.js" async></script>
-        <div class="pa-gallery-player-widget" style="width:100%; height:600px; display:none; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
-             data-link="https://photos.app.goo.gl/ireJ6juv1Fq6L8dD9"
-             data-title="Surgical Guide Case Gallery"
-             data-description="我們的最新外科導板案例 — 自動同步更新">
-             <object data="https://lh3.googleusercontent.com/pw/AP1GczP..."></object>
-        </div>
-    </div>
-</section>
-      -->
-      <div style="border:2px dashed #f2e0d0; border-radius:15px; padding:2rem; background:#fffaf5;">
-        <p style="font-size:1.1rem; margin-bottom:1rem;">📸 <strong>Google Photos Gallery — Setup Required</strong></p>
-        <p style="opacity:0.7; font-size:0.95rem; max-width:500px; margin:0 auto 1.5rem;">
-          To activate the auto-updating gallery, share your Google Photos album and paste the embed link below (replace the placeholder iframe src).
-        </p>
-        <!-- Replace the src below with your Google Photos shared album URL -->
-        <!-- <iframe src="YOUR_GOOGLE_PHOTOS_ALBUM_EMBED_URL" width="100%" height="450" style="border:none; border-radius:12px;"></iframe> -->
-        <a href="https://photos.google.com" target="_blank" style="display:inline-block; padding:0.8rem 2rem; background:var(--primary-warm); color:white; border-radius:50px; text-decoration:none; font-weight:700;">
-          Open Google Photos to Get Embed Link
-        </a>
+    <!-- ✅ FIX: Google Photos Gallery - publicalbum widget properly activated (NOT inside a comment) -->
+    <div style="background:#fff;border-radius:25px;padding:3rem;box-shadow:0 10px 30px rgba(0,0,0,0.05);text-align:center;margin-bottom:3rem;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:0.5rem;">Case Gallery</h3>
+      <p style="opacity:0.7;margin-bottom:2rem;">Our latest surgical guide cases</p>
+      <script src="https://cdn.jsdelivr.net/npm/publicalbum@latest/embed-ui.min.js" async></script>
+      <div class="pa-gallery-player-widget"
+           style="width:100%;height:500px;display:none;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.1);"
+           data-link="https://photos.app.goo.gl/ireJ6juv1Fq6L8dD9"
+           data-title="Surgical Guide Cases"
+           data-description="Our latest surgical guide cases">
       </div>
+      <noscript>
+        <p>Please enable JavaScript to view the gallery.</p>
+      </noscript>
     </div>
-
   </div>
 </section>
 
+<!-- ===================== LAB SLIP ===================== -->
 <section id="labslip" class="page">
   <div class="section-header">
     <h2>Digital Lab Slip</h2>
@@ -614,10 +460,9 @@ function selectColor(val, name) {
   <div class="form-container">
     <div id="printableLabSlip">
       <div class="print-only-header">
-        <div style="font-family:'Playfair Display'; font-size:1.5rem;">Cusps and Crafts by Shine</div>
-        <div style="text-align:right; font-size:0.8rem;">Digital Laboratory Services<br>Como, Western Australia</div>
+        <div style="font-family:'Playfair Display';font-size:1.5rem;">Cusps and Crafts by Shine</div>
+        <div style="text-align:right;font-size:0.8rem;">Digital Laboratory Services<br>Como, Western Australia</div>
       </div>
-
       <form id="slipForm">
         <div class="form-section">
           <h3>Clinician Information</h3>
@@ -626,15 +471,13 @@ function selectColor(val, name) {
             <div><label>Dentist Name</label><input type="text" placeholder="Dr. Name"></div>
           </div>
         </div>
-
         <div class="form-section">
-          <h3>Patient & Job Details</h3>
+          <h3>Patient &amp; Job Details</h3>
           <div class="grid">
             <div><label>Patient Name / ID</label><input type="text" required></div>
             <div><label>Due Date</label><input type="date"></div>
           </div>
         </div>
-
         <div class="form-section">
           <h3>Appliance Selection</h3>
           <div class="grid">
@@ -650,24 +493,23 @@ function selectColor(val, name) {
               </select>
             </div>
             <div>
+              <!-- ✅ FIX: ID corrected to match selectColor() function -->
               <label>Selected Colour / Code</label>
-              <input type="text" id="selectedColourInput" placeholder="Click a colour in the chart">
+              <input type="text" id="selectedColourInput" placeholder="Click a colour in the chart" readonly>
               <div id="formGuardPreview" class="lab-preview-guard"></div>
             </div>
           </div>
-          <div style="margin-top: 1rem;">
+          <div style="margin-top:1rem;">
             <label>Additional Instructions</label>
             <textarea rows="3" placeholder="Special requirements..."></textarea>
           </div>
         </div>
-
-        <button type="button" class="btn-print" onclick="window.print()" style="width:100%; padding:1rem; background:var(--primary-warm); color:white; border:none; border-radius:10px; font-weight:700; cursor:pointer; font-size:1.1rem;">Print Lab Slip</button>
+        <button type="button" class="btn-print" onclick="window.print()" style="width:100%;padding:1rem;background:var(--primary-warm);color:white;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:1.1rem;">Print Lab Slip</button>
       </form>
-
       <div class="print-footer-sign">
-        <div style="display:flex; justify-content:space-between; margin-top:40px;">
-          <div style="border-top:1px solid #333; width:200px; padding-top:5px; font-size:0.8rem;">Dentist Signature</div>
-          <div style="border-top:1px solid #333; width:200px; padding-top:5px; font-size:0.8rem;">Date</div>
+        <div style="display:flex;justify-content:space-between;margin-top:40px;">
+          <div style="border-top:1px solid #333;width:200px;padding-top:5px;font-size:0.8rem;">Dentist Signature</div>
+          <div style="border-top:1px solid #333;width:200px;padding-top:5px;font-size:0.8rem;">Date</div>
         </div>
       </div>
     </div>
@@ -677,82 +519,103 @@ function selectColor(val, name) {
 <footer>
   <div class="footer-grid">
     <div>
-      <h2 style="font-family:'Playfair Display'; margin-bottom:1rem;">Cusps and Crafts by Shine</h2>
-      <p style="opacity:0.8;">Specialist digital laboratory in Western Australia. We deliver clinic-ready appliances with precision and care.</p>
+      <h2 style="font-family:'Playfair Display';margin-bottom:1rem;">Cusps and Crafts by Shine</h2>
+      <p style="opacity:0.8;">Specialist digital laboratory in Western Australia.</p>
     </div>
     <div class="footer-contact">
       <strong>Contact Our Team</strong>
-      <!-- WhatsApp click-to-chat: opens WhatsApp message to Tsao Shine -->
-      <a href="https://wa.me/61411482589" target="_blank" style="display:flex; align-items:center; gap:8px; color:white; text-decoration:none;">
+      <a href="https://wa.me/61411482589" target="_blank" style="display:flex;align-items:center;gap:8px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp: 0411 482 589
       </a>
-      <a href="mailto:thewindshine@gmail.com" style="display:flex; align-items:center; gap:8px; color:white; text-decoration:none;">
+      <a href="mailto:thewindshine@gmail.com" style="display:flex;align-items:center;gap:8px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
         thewindshine@gmail.com
       </a>
-      <p style="opacity:0.7; font-size:0.9rem;">📍 Cale Street, Como WA</p>
+      <p style="opacity:0.7;font-size:0.9rem;">📍 Cale Street, Como WA</p>
     </div>
   </div>
-  <div class="footer-bottom">
-    &copy; 2026 Cusps and Crafts by Shine. Professional Dental Laboratory Services.
-  </div>
+  <div class="footer-bottom">&copy; 2026 Cusps and Crafts by Shine. Professional Dental Laboratory Services.</div>
 </footer>
 
 <script>
-//導航與頁面切換
+// =============================================
+// NAVIGATION
+// =============================================
 function handleNav() {
   const hash = window.location.hash || '#home';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.querySelector(hash);
-  if(target) target.classList.add('active');
-
+  if (target) target.classList.add('active');
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.classList.toggle('active', a.getAttribute('href') === hash);
   });
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
-
 window.addEventListener('hashchange', handleNav);
 window.addEventListener('load', handleNav);
 
-// 顏色選擇與預覽同步功能
+// =============================================
+// ✅ FIX: UNIFIED selectColor() — handles both
+//    solid colours AND CSS gradients
+//    IDs now match the HTML: selectedColourInput, formGuardPreview
+// =============================================
 function selectColor(colorValue, colorName) {
-  const previewGuard = document.getElementById('previewGuard');
-  const previewName = document.getElementById('previewName');
-  if(previewGuard && previewName) {
-    previewGuard.style.background = colorValue;
-    previewGuard.style.backgroundImage = '';
-    previewName.innerText = "Selected: " + colorName;
-  }
-  const slipInput = document.getElementById('selectedColourInput');
-  const formPreview = document.getElementById('formGuardPreview');
-  if(slipInput) slipInput.value = colorName;
-  if(formPreview) { formPreview.style.background = colorValue; formPreview.style.backgroundImage = ''; }
-  document.getElementById('previewGuard').scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
+  const previewGuard  = document.getElementById('previewGuard');
+  const previewName   = document.getElementById('previewName');
+  const slipInput     = document.getElementById('selectedColourInput');
+  const formPreview   = document.getElementById('formGuardPreview');
 
-// 圖片顏色選擇（AUS系列）
-function selectColorImg(imgPath, colorName) {
-  const previewGuard = document.getElementById('previewGuard');
-  const previewName = document.getElementById('previewName');
-  if(previewGuard && previewName) {
-    previewGuard.style.backgroundImage = `url('${imgPath}')`;
+  if (previewGuard) {
+    previewGuard.style.backgroundImage = '';   // clear any previous image
+    previewGuard.style.background = colorValue;
     previewGuard.style.backgroundSize = 'cover';
     previewGuard.style.backgroundPosition = 'center';
-    previewName.innerText = "Selected: " + colorName;
   }
-  const slipInput = document.getElementById('selectedColourInput');
-  const formPreview = document.getElementById('formGuardPreview');
-  if(slipInput) slipInput.value = colorName;
-  if(formPreview) {
-    formPreview.style.backgroundImage = `url('${imgPath}')`;
+  if (previewName)  previewName.innerText = 'Selected: ' + colorName;
+  if (slipInput)    slipInput.value = colorName;
+  if (formPreview) {
+    formPreview.style.backgroundImage = '';    // clear any previous image
+    formPreview.style.background = colorValue;
     formPreview.style.backgroundSize = 'cover';
     formPreview.style.backgroundPosition = 'center';
   }
-  document.getElementById('previewGuard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // Scroll preview into view
+  if (previewGuard) {
+    previewGuard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+// =============================================
+// ✅ FIX: selectColorImg() — handles AUS image
+//    series with proper backgroundImage syntax
+// =============================================
+function selectColorImg(imgPath, colorName) {
+  const previewGuard  = document.getElementById('previewGuard');
+  const previewName   = document.getElementById('previewName');
+  const slipInput     = document.getElementById('selectedColourInput');
+  const formPreview   = document.getElementById('formGuardPreview');
+
+  if (previewGuard) {
+    previewGuard.style.background = '';        // clear solid colour first
+    previewGuard.style.backgroundImage = "url('" + imgPath + "')";
+    previewGuard.style.backgroundSize = 'cover';
+    previewGuard.style.backgroundPosition = 'center';
+  }
+  if (previewName)  previewName.innerText = 'Selected: ' + colorName;
+  if (slipInput)    slipInput.value = colorName;
+  if (formPreview) {
+    formPreview.style.background = '';
+    formPreview.style.backgroundImage = "url('" + imgPath + "')";
+    formPreview.style.backgroundSize = 'cover';
+    formPreview.style.backgroundPosition = 'center';
+  }
+
+  if (previewGuard) {
+    previewGuard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 </script>
-
 </body>
 </html>
