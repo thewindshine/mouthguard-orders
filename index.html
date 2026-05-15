@@ -85,9 +85,11 @@ footer{background:var(--deep-brown);color:white;padding:4rem 8% 2rem;margin-top:
   @page{size:A4;margin:1.5cm 2cm;}
   nav,.btn-print,.section-header,footer,.hero,.cards-grid,.detail-container,.btn-back-to-form,.colour-chart-container,.preview-section,.wa-float,.dropbox-btn{display:none!important;}
   body{background:white!important;font-size:13pt;}
-  #labslip{display:block!important;padding-top:0;background:white!important;}
-  .form-container{max-width:100%;padding:0;margin:0;background:white!important;}
-  #printableLabSlip{box-shadow:none;border:none;padding:0;background:white!important;}
+  html,body{height:auto!important;overflow:hidden!important;}
+  #labslip{display:block!important;padding-top:0;background:white!important;height:auto!important;}
+  .form-container{max-width:100%;padding:0;margin:0;background:white!important;height:auto!important;}
+  #printableLabSlip{box-shadow:none;border:none;padding:0;background:white!important;height:auto!important;}
+  section,div{page-break-after:avoid;}
   input,textarea,select{border:none!important;border-bottom:1.5px solid #ccc!important;background:transparent;font-size:13pt!important;padding:6px 0!important;}
   textarea{height:auto!important;min-height:0!important;overflow:hidden!important;resize:none!important;}
   .preview-guard-shape{display:none!important;}
@@ -503,7 +505,12 @@ footer{background:var(--deep-brown);color:white;padding:4rem 8% 2rem;margin-top:
             </div>
             <div>
               <label>Selected Colour / Code</label>
-              <input type="text" id="selectedColourInput" placeholder="Click a colour in the chart" readonly>
+              <div style="position:relative;">
+                <input type="text" id="selectedColourInput" placeholder="Tap to choose a colour ↗" readonly
+                  style="cursor:pointer;background:#fffbf5;border:1.5px solid var(--primary-warm)!important;color:var(--deep-brown);padding-right:2.5rem;"
+                  onclick="goPickColour()">
+                <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;">🎨</span>
+              </div>
               <div id="formGuardPreview" class="lab-preview-guard"></div>
             </div>
           </div>
@@ -568,6 +575,19 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   });
 });
 
+// Track if user came from lab slip to pick a colour
+let pickingColourForLabSlip = false;
+
+function goPickColour() {
+  pickingColourForLabSlip = true;
+  location.hash = '#mouthguards';
+  // Smooth scroll to colour chart after page transition
+  setTimeout(() => {
+    const chart = document.querySelector('.colour-chart-container');
+    if (chart) chart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 400);
+}
+
 function handleNav() {
   const hash = window.location.hash || '#home';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -590,7 +610,18 @@ function selectColor(colorValue, colorName) {
   if (previewName)  previewName.innerText = 'Selected: ' + colorName;
   if (slipInput)    slipInput.value = colorName;
   if (formPreview)  { formPreview.style.backgroundImage=''; formPreview.style.background=colorValue; formPreview.style.backgroundSize='cover'; formPreview.style.backgroundPosition='center'; }
-  if (previewGuard) previewGuard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (pickingColourForLabSlip) {
+    pickingColourForLabSlip = false;
+    setTimeout(() => {
+      location.hash = '#labslip';
+      setTimeout(() => {
+        const el = document.getElementById('selectedColourInput');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    }, 150);
+  } else {
+    if (previewGuard) previewGuard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 
 function selectColorImg(imgPath, colorName) {
@@ -602,7 +633,18 @@ function selectColorImg(imgPath, colorName) {
   if (previewName)  previewName.innerText = 'Selected: ' + colorName;
   if (slipInput)    slipInput.value = colorName;
   if (formPreview)  { formPreview.style.background=''; formPreview.style.backgroundImage="url('"+imgPath+"')"; formPreview.style.backgroundSize='cover'; formPreview.style.backgroundPosition='center'; }
-  if (previewGuard) previewGuard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (pickingColourForLabSlip) {
+    pickingColourForLabSlip = false;
+    setTimeout(() => {
+      location.hash = '#labslip';
+      setTimeout(() => {
+        const el = document.getElementById('selectedColourInput');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    }, 150);
+  } else {
+    if (previewGuard) previewGuard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 </script>
 </body>
