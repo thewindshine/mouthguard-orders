@@ -105,6 +105,28 @@ footer{background:var(--deep-brown);color:white;padding:4rem 8% 2rem;margin-top:
 @media(max-width:768px){
   .detail-grid,.footer-grid,.surgical-grid{grid-template-columns:1fr;}
   .footer-contact{align-items:center;text-align:center;}
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    position:fixed;
+    top:64px;left:0;right:0;
+    background:rgba(255,255,255,0.98);
+    backdrop-filter:blur(10px);
+    padding:1rem 5% 1.5rem;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    gap:0.3rem;
+    z-index:999;
+  }
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:0.8rem 1rem;border-radius:10px;font-size:1rem;}
+  .hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:8px;border:none;background:none;}
+  .hamburger span{display:block;width:24px;height:2.5px;background:var(--deep-brown);border-radius:2px;transition:all 0.3s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+}
+@media(min-width:769px){
+  .hamburger{display:none;}
 }
 </style>
 </head>
@@ -115,7 +137,10 @@ footer{background:var(--deep-brown);color:white;padding:4rem 8% 2rem;margin-top:
     <img src="logo.jpg" alt="Logo" class="nav-logo-img">
     <span>Cusps and Crafts by Shine</span>
   </a>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#home">Home</a></li>
     <li><a href="#mouthguards">Mouthguards</a></li>
     <li><a href="#splints">Splints</a></li>
@@ -527,6 +552,21 @@ footer{background:var(--deep-brown);color:white;padding:4rem 8% 2rem;margin-top:
 </footer>
 
 <script>
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Close menu when a nav link is clicked
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
 function handleNav() {
   const hash = window.location.hash || '#home';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
