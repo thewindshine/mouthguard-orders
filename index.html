@@ -494,24 +494,30 @@ footer{background:var(--deep-brown);color:white;padding:4rem 8% 2rem;margin-top:
           <div class="grid">
             <div>
               <label>Appliance Type</label>
-              <select id="applianceType">
-                <option>Mouthguard - Standard</option>
-                <option>Mouthguard - Professional</option>
-                <option>Mouthguard - Ultimate</option>
-                <option>Occlusal Splint - Hard</option>
-                <option>Occlusal Splint - Dual</option>
-                <option>Surgical Guide</option>
+              <select id="applianceType" onchange="updateApplianceFields()">
+                <option data-category="mouthguard">Mouthguard - Standard</option>
+                <option data-category="mouthguard">Mouthguard - Professional</option>
+                <option data-category="mouthguard">Mouthguard - Ultimate</option>
+                <option data-category="splint">Occlusal Splint - Hard</option>
+                <option data-category="splint">Occlusal Splint - Dual</option>
+                <option data-category="surgical">Surgical Guide</option>
               </select>
             </div>
             <div>
-              <label>Selected Colour / Code</label>
-              <div style="position:relative;">
-                <input type="text" id="selectedColourInput" placeholder="Tap to choose a colour ↗" readonly
-                  style="cursor:pointer;background:#fffbf5;border:1.5px solid var(--primary-warm)!important;color:var(--deep-brown);padding-right:2.5rem;"
-                  onclick="goPickColour()">
-                <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;">🎨</span>
+              <div id="colourFieldWrapper">
+                <label>Selected Colour / Code</label>
+                <div style="position:relative;">
+                  <input type="text" id="selectedColourInput" placeholder="Tap to choose a colour ↗" readonly
+                    style="cursor:pointer;background:#fffbf5;border:1.5px solid var(--primary-warm)!important;color:var(--deep-brown);padding-right:2.5rem;"
+                    onclick="goPickColour()">
+                  <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;">🎨</span>
+                </div>
+                <div id="formGuardPreview" class="lab-preview-guard"></div>
               </div>
-              <div id="formGuardPreview" class="lab-preview-guard"></div>
+              <div id="dobFieldWrapper" style="display:none;">
+                <label>Patient Date of Birth</label>
+                <input type="date" id="patientDOB">
+              </div>
             </div>
           </div>
           <div style="margin-top:1rem;">
@@ -623,6 +629,30 @@ function selectColor(colorValue, colorName) {
     if (previewGuard) previewGuard.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
+
+function updateApplianceFields() {
+  const select = document.getElementById('applianceType');
+  const category = select.options[select.selectedIndex].dataset.category;
+  const colourWrapper = document.getElementById('colourFieldWrapper');
+  const dobWrapper = document.getElementById('dobFieldWrapper');
+  const colourInput = document.getElementById('selectedColourInput');
+  const dobInput = document.getElementById('patientDOB');
+  const previewName = document.getElementById('previewName');
+
+  const showColour = category === 'mouthguard';
+  const showDOB = category === 'surgical';
+
+  colourWrapper.style.display = showColour ? '' : 'none';
+  dobWrapper.style.display = showDOB ? '' : 'none';
+
+  if (!showColour && colourInput.value) {
+    colourInput.value = '';
+    if (previewName) previewName.innerText = '';
+  }
+  if (!showDOB) dobInput.value = '';
+  dobInput.required = showDOB;
+}
+window.addEventListener('load', updateApplianceFields);
 
 function selectColorImg(imgPath, colorName) {
   const previewGuard = document.getElementById('previewGuard');
